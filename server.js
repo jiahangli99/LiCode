@@ -2,22 +2,22 @@ require('dotenv').config();
 // Variables
 const express = require('express');
 const app = express();
-const Mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const methodOverride = require('method-override')
+const codesController = require('./controller/codes')
 const PORT = process.env.PORT
-// Middleware
-app.use(express.urlencoded({
-    extended: true
-}));
-app.use(methodOverride('_method'));
-
 // Mongoose Connect
 
-Mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
 
+app.use(express.urlencoded({
+    extended: true
+}));
+app.use(methodOverride('_method'));
+app.use('/', codesController)
 
 // listen
 app.listen(PORT, () => {
