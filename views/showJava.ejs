@@ -20,7 +20,6 @@
 </head>
 <body>
     <ul>
-        <% codes.forEach(code => { %>
             <form name ='quiz'>
                 <p><%= code.name %> </p>
                 <p><%= code.description %></p>
@@ -30,7 +29,6 @@
                 <p><input type="radio" name="a" value="<%= code.d %>"><%= code.d %></p>
                 <input type="button" value="done" onclick="check('<%= code.answer %>')">
             </form>
-        <% }) %> 
     </ul>
 </body>
 </html>
