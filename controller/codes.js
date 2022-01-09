@@ -3,6 +3,7 @@ const codeRouter = express.Router();
 const JavaCode = require('../models/code')
 const Category = require('../models/category')
 const CSS = require('../models/css')
+const HTML = require('../models/html')
 
 // Seed category
 const categorySeed = require('../models/categorySeed')
@@ -22,6 +23,14 @@ codeRouter.get('/codes/seed', (req, res) => {
 const cssSeed = require('../models/cssSeed')
 codeRouter.get('/css/seed', (req, res) => {
     CSS.create(cssSeed, (err, data) => {
+        res.redirect('/')
+    })
+});
+
+// Seed html
+const htmlSeed = require('../models/htmlSeed')
+codeRouter.get('/html/seed', (req, res) => {
+    HTML.create(htmlSeed, (err, data) => {
         res.redirect('/')
     })
 });
@@ -82,13 +91,22 @@ codeRouter.get('/:id/cssview', (req, res) => {
         });
     });
 });
-// codeRouter.get('/:id/html', (req, res) => {
-//     Code.find({}, (err, allCodes) => {
-//         res.render('typeView.ejs', {
-//             codes: allCodes,
-//         });
-//     });
-// });
+
+// Show html
+codeRouter.get('/:id/html', (req, res) => {
+    HTML.find({}, (err, allHtml) => {
+        res.render('htmlView.ejs', {
+            allHtml
+        });
+    });
+});
+codeRouter.get('/:id/htmlview', (req, res) => {
+    HTML.findById(req.params.id, (err, html) => {
+        res.render('showHtml.ejs', {
+            html
+        });
+    });
+});
 // codeRouter.get('/:id/devtool', (req, res) => {
 //     Code.find({}, (err, allCodes) => {
 //         res.render('typeView.ejs', {
