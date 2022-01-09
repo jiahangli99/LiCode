@@ -10,10 +10,10 @@
 
 <body>
     <ul>
-        <% codes.forEach(code => { %>
+        <% allCss.forEach(css => { %>
         <li>
-            <a href="/<%= code.id %> ">
-                <p><%= code.name%> </p>
+            <a href="/<%= css.id %>/cssview">
+                <p><%= css.name%> </p>
             </a>
         </li>
         <% }) %>
