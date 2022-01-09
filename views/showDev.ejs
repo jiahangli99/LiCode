@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function check(answer) {
+            const selection = document.querySelector('input[type="radio"]:checked').value
+            if(selection === answer){
+                alert('yes')
+            } else {
+                alert('no')
+            }
+            console.log(typeof(selection))
+            console.log(typeof(answer))
+            }
+    </script>
+    <title>code</title>
+</head>
+<body>
+    <ul>
+            <form name ='quiz'>
+                <p><%= dev.name %> </p>
+                <p><%= dev.description %></p>
+                <p><input type="radio" name="a" value="<%= dev.a %>"><%= dev.a %></p>
+                <p><input type="radio" name="a" value="<%= dev.b %>"><%= dev.b %></p>
+                <p><input type="radio" name="a" value="<%= dev.c %>"><%= dev.c %></p>
+                <p><input type="radio" name="a" value="<%= dev.d %>"><%= dev.d %></p>
+                <input type="button" value="done" onclick="check('<%= dev.answer %>')">
+            </form>
+    </ul>
+</body>
+</html>
