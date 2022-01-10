@@ -5,6 +5,8 @@ const Category = require('../models/category')
 const CSS = require('../models/css')
 const HTML = require('../models/html')
 const DEV = require('../models/devTool')
+const User = require('../models/user');
+
 
 // Seed category
 const categorySeed = require('../models/categorySeed')
@@ -54,8 +56,25 @@ codeRouter.get('/', (req, res) => {
 })
 
 
-// NEW
+// NEW JS
+codeRouter.get('/javascript/new', (req, res) => {
+    res.render('newJS.ejs')
+})
 
+// NEW CSS
+codeRouter.get('/css/new', (req, res) => {
+    res.render('newCss.ejs')
+})
+
+// NEW HTML
+codeRouter.get('/html/new', (req, res) => {
+    res.render('newHtml.ejs')
+})
+
+// NEW DEV
+codeRouter.get('/dev/new', (req, res) => {
+    res.render('newDev.ejs')
+})
 
 // Delete
 
@@ -63,8 +82,33 @@ codeRouter.get('/', (req, res) => {
 // Update
 
 
-// Create
+// Create JS
+codeRouter.post('/61d8dba87557c55c5353fa7f/javascript', (req,res) => {
+    JavaCode.create(req.body, (err, createdCode) => {
+        res.redirect('/61d8dba87557c55c5353fa7f/javascript')
+    })
+})
 
+// Create CSS
+codeRouter.post('/61d8dba87557c55c5353fa80/css', (req,res) => {
+    CSS.create(req.body, (err, createdCode) => {
+        res.redirect('/61d8dba87557c55c5353fa80/css')
+    })
+})
+
+// Create HTML
+codeRouter.post('/61d8dba87557c55c5353fa81/html', (req,res) => {
+    HTML.create(req.body, (err, createdCode) => {
+        res.redirect('/61d8dba87557c55c5353fa81/html')
+    })
+})
+
+// Create DEV
+codeRouter.post('/61d8dba87557c55c5353fa82/devtool', (req,res) => {
+    DEV.create(req.body, (err, createdCode) => {
+        res.redirect('/61d8dba87557c55c5353fa82/devtool')
+    })
+})
 
 // Edit
 
