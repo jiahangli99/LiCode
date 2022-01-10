@@ -12,9 +12,19 @@
     <ul>
         <% scriptCodes.forEach(code => { %>
         <li>
+            </a>
+            <% if(!Admin.admin) { %>
             <a href="/<%= code.id %>/javascriptcode">
                 <p><%= code.name%> </p>
-            </a>
+                <form action="/<%= code.id %>/javascriptcode?_method=DELETE" method="POST"
+                    style="display: inline; margin-left: 16px;">
+                    <input type="submit" value="DELETE" />
+                </form>
+                <% }else { %>
+                    <a href="/<%= code.id %>/javascriptcode">
+                        <p><%= code.name%> </p>
+               <% } %>
+               <% console.log(admin) %> 
         </li>
         <% }) %>
     </ul>

@@ -15,6 +15,10 @@
             <a href="/<%= dev.id %>/devtoolview">
                 <p><%= dev.name%> </p>
             </a>
+            <form action="/<%= dev.id %>/devtoolview?_method=DELETE" method="POST"
+                style="display: inline; margin-left: 16px;">
+                <input type="submit" value="DELETE" />
+            </form>
         </li>
         <% }) %>
     </ul>

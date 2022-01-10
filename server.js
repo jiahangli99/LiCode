@@ -8,7 +8,10 @@ const SECRET = process.env.SECRET
 const methodOverride = require('method-override')
 const codesController = require('./controller/codes')
 const userController = require('./controller/users')
+const adminController = require('./controller/admin')
 const expressSession = require('express-session');
+const auth = require('./middleware/auth')
+const admin = require('./middleware/admin')
 // Mongoose Connect
 
 mongoose.connect(process.env.DATABASE_URL, {
@@ -29,8 +32,12 @@ app.use(function(req, res, next) {
     next();
 })
 app.use(methodOverride('_method'));
+
+app.use(auth.handleLoggedInUser)
+
 app.use('/', codesController)
 app.use('/', userController)
+app.use('/', adminController)
 
 // listen
 app.listen(PORT, () => {

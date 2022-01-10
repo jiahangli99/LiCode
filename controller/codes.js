@@ -6,6 +6,9 @@ const CSS = require('../models/css')
 const HTML = require('../models/html')
 const DEV = require('../models/devTool')
 const User = require('../models/user');
+const auth = require('../middleware/auth')
+const admin = require('../middleware/admin')
+const Admin = require('../models/admin')
 
 
 // Seed category
@@ -17,7 +20,7 @@ codeRouter.get('/seed', (req, res) => {
 });
 // Seed javascript
 const codeSeed = require('../models/codeSeed')
-codeRouter.get('/codes/seed', (req, res) => {
+codeRouter.get('/codes/seed', admin.isAdminAuthenticated, (req, res) => {
     JavaCode.create(codeSeed, (err, data) => {
         res.redirect('/')
     })
@@ -57,54 +60,73 @@ codeRouter.get('/', (req, res) => {
 
 
 // NEW JS
-codeRouter.get('/javascript/new', (req, res) => {
+codeRouter.get('/javascript/new', admin.isAdminAuthenticated, (req, res) => {
     res.render('newJS.ejs')
 })
 
 // NEW CSS
-codeRouter.get('/css/new', (req, res) => {
+codeRouter.get('/css/new', admin.isAdminAuthenticated, (req, res) => {
     res.render('newCss.ejs')
 })
 
 // NEW HTML
-codeRouter.get('/html/new', (req, res) => {
+codeRouter.get('/html/new', admin.isAdminAuthenticated, (req, res) => {
     res.render('newHtml.ejs')
 })
 
 // NEW DEV
-codeRouter.get('/dev/new', (req, res) => {
+codeRouter.get('/dev/new', admin.isAdminAuthenticated, (req, res) => {
     res.render('newDev.ejs')
 })
 
 // Delete
-
+codeRouter.delete('/:id/javascriptcode', admin.isAdminAuthenticated, (req, res) => {
+    JavaCode.findByIdAndRemove(req.params.id, (err, data) => {
+        res.redirect("/")
+    })
+})
+codeRouter.delete('/:id/cssview', admin.isAdminAuthenticated, (req, res) => {
+    CSS.findByIdAndRemove(req.params.id, (err, data) => {
+        res.redirect("/")
+    })
+})
+codeRouter.delete('/:id/devtoolview', admin.isAdminAuthenticated, (req, res) => {
+    DEV.findByIdAndRemove(req.params.id, (err, data) => {
+        res.redirect("/")
+    })
+})
+codeRouter.delete('/:id/htmlview', admin.isAdminAuthenticated, (req, res) => {
+    HTML.findByIdAndRemove(req.params.id, (err, data) => {
+        res.redirect("/")
+    })
+})
 
 // Update
 
 
 // Create JS
-codeRouter.post('/61d8dba87557c55c5353fa7f/javascript', (req,res) => {
+codeRouter.post('/61d8dba87557c55c5353fa7f/javascript', admin.isAdminAuthenticated, (req, res) => {
     JavaCode.create(req.body, (err, createdCode) => {
         res.redirect('/61d8dba87557c55c5353fa7f/javascript')
     })
 })
 
 // Create CSS
-codeRouter.post('/61d8dba87557c55c5353fa80/css', (req,res) => {
+codeRouter.post('/61d8dba87557c55c5353fa80/css', admin.isAdminAuthenticated, (req, res) => {
     CSS.create(req.body, (err, createdCode) => {
         res.redirect('/61d8dba87557c55c5353fa80/css')
     })
 })
 
 // Create HTML
-codeRouter.post('/61d8dba87557c55c5353fa81/html', (req,res) => {
+codeRouter.post('/61d8dba87557c55c5353fa81/html', admin.isAdminAuthenticated, (req, res) => {
     HTML.create(req.body, (err, createdCode) => {
         res.redirect('/61d8dba87557c55c5353fa81/html')
     })
 })
 
 // Create DEV
-codeRouter.post('/61d8dba87557c55c5353fa82/devtool', (req,res) => {
+codeRouter.post('/61d8dba87557c55c5353fa82/devtool', admin.isAdminAuthenticated, (req, res) => {
     DEV.create(req.body, (err, createdCode) => {
         res.redirect('/61d8dba87557c55c5353fa82/devtool')
     })
@@ -114,14 +136,16 @@ codeRouter.post('/61d8dba87557c55c5353fa82/devtool', (req,res) => {
 
 
 // Show javascript
-codeRouter.get('/:id/javascript', (req, res) => {
+codeRouter.get('/:id/javascript', auth.isAuthenticated, (req, res) => {
     JavaCode.find({}, (err, allJavascriptCodes) => {
         res.render('javascriptView.ejs', {
             scriptCodes: allJavascriptCodes,
+            Admin,
+            admin: req.session.Admin
         });
     });
 });
-codeRouter.get('/:id/javascriptcode', (req, res) => {
+codeRouter.get('/:id/javascriptcode', auth.isAuthenticated, (req, res) => {
     JavaCode.findById(req.params.id, (err, foundCode) => {
         res.render('showJavaS.ejs', {
             code: foundCode,
@@ -130,14 +154,14 @@ codeRouter.get('/:id/javascriptcode', (req, res) => {
 });
 
 // Show css
-codeRouter.get('/:id/css', (req, res) => {
+codeRouter.get('/:id/css', auth.isAuthenticated, (req, res) => {
     CSS.find({}, (err, allCss) => {
         res.render('cssview.ejs', {
             allCss
         });
     });
 });
-codeRouter.get('/:id/cssview', (req, res) => {
+codeRouter.get('/:id/cssview', auth.isAuthenticated, (req, res) => {
     CSS.findById(req.params.id, (err, foundCss) => {
         res.render('showCss.ejs', {
             css: foundCss
@@ -146,14 +170,14 @@ codeRouter.get('/:id/cssview', (req, res) => {
 });
 
 // Show html
-codeRouter.get('/:id/html', (req, res) => {
+codeRouter.get('/:id/html', auth.isAuthenticated, (req, res) => {
     HTML.find({}, (err, allHtml) => {
         res.render('htmlView.ejs', {
             allHtml
         });
     });
 });
-codeRouter.get('/:id/htmlview', (req, res) => {
+codeRouter.get('/:id/htmlview', auth.isAuthenticated, (req, res) => {
     HTML.findById(req.params.id, (err, html) => {
         res.render('showHtml.ejs', {
             html
@@ -161,14 +185,14 @@ codeRouter.get('/:id/htmlview', (req, res) => {
     });
 });
 // Show Devtools
-codeRouter.get('/:id/devtool', (req, res) => {
+codeRouter.get('/:id/devtool', auth.isAuthenticated, (req, res) => {
     DEV.find({}, (err, allDev) => {
         res.render('devView.ejs', {
             allDev
         });
     });
 });
-codeRouter.get('/:id/devtoolview', (req, res) => {
+codeRouter.get('/:id/devtoolview', auth.isAuthenticated, (req, res) => {
     DEV.findById(req.params.id, (err, dev) => {
         res.render('showDev.ejs', {
             dev

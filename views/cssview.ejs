@@ -15,6 +15,10 @@
             <a href="/<%= css.id %>/cssview">
                 <p><%= css.name%> </p>
             </a>
+            <form action="/<%= css.id %>/cssview?_method=DELETE" method="POST"
+                style="display: inline; margin-left: 16px;">
+                <input type="submit" value="DELETE" />
+            </form>
         </li>
         <% }) %>
     </ul>

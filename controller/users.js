@@ -3,6 +3,7 @@ const express = require('express');
 const userRouter = express.Router();
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
+const auth = require('../middleware/auth')
 
 userRouter.get('/login', (req, res) => {
     res.render('login.ejs', {error: ''});
