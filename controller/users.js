@@ -14,7 +14,7 @@ userRouter.post('/login', (req, res) => {
        const isMatched = bcrypt.compareSync(req.body.password, user.password);
        if(!isMatched) return res.render('login.ejs', {error: 'invalid credentials'})
        req.session.user = user._id
-        res.redirect('/')
+       res.redirect('/')
    })
 })
 

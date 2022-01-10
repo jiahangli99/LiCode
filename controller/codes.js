@@ -137,11 +137,11 @@ codeRouter.post('/61d8dba87557c55c5353fa82/devtool', admin.isAdminAuthenticated,
 
 // Show javascript
 codeRouter.get('/:id/javascript', auth.isAuthenticated, (req, res) => {
+    console.log(req.session.admin)
     JavaCode.find({}, (err, allJavascriptCodes) => {
         res.render('javascriptView.ejs', {
             scriptCodes: allJavascriptCodes,
-            Admin,
-            admin: req.session.Admin
+            admin: req.session.admin
         });
     });
 });
@@ -157,7 +157,8 @@ codeRouter.get('/:id/javascriptcode', auth.isAuthenticated, (req, res) => {
 codeRouter.get('/:id/css', auth.isAuthenticated, (req, res) => {
     CSS.find({}, (err, allCss) => {
         res.render('cssview.ejs', {
-            allCss
+            allCss,
+            admin: req.session.admin
         });
     });
 });
@@ -173,7 +174,8 @@ codeRouter.get('/:id/cssview', auth.isAuthenticated, (req, res) => {
 codeRouter.get('/:id/html', auth.isAuthenticated, (req, res) => {
     HTML.find({}, (err, allHtml) => {
         res.render('htmlView.ejs', {
-            allHtml
+            allHtml,
+            admin: req.session.admin
         });
     });
 });
@@ -188,7 +190,8 @@ codeRouter.get('/:id/htmlview', auth.isAuthenticated, (req, res) => {
 codeRouter.get('/:id/devtool', auth.isAuthenticated, (req, res) => {
     DEV.find({}, (err, allDev) => {
         res.render('devView.ejs', {
-            allDev
+            allDev,
+            admin: req.session.admin
         });
     });
 });

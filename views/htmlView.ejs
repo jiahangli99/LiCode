@@ -11,15 +11,21 @@
 <body>
     <ul>
         <% allHtml.forEach(html => { %>
-        <li>
-            <a href="/<%= html.id %>/htmlview">
-                <p><%= html.name%> </p>
-            </a>
-            <form action="/<%= html.id %>/htmlview?_method=DELETE" method="POST"
-                style="display: inline; margin-left: 16px;">
-                <input type="submit" value="DELETE" />
-            </form>
-        </li>
+            <li>
+                <% if(!admin) { %>
+                <a href="/<%= html.id %>/javascriptcode">
+                    <p><%= html.name%> </p>
+    
+                    <% }else { %>
+                        <a href="/<%= html.id %>/javascriptcode">
+                            <p><%= html.name%> </p>
+                            <form action="/<%= html.id %>/htmlview?_method=DELETE" method="POST"
+                                style="display: inline; margin-left: 16px;">
+                                <input type="submit" value="DELETE" />
+                            </form>
+                   <% } %>
+                    
+            </li>
         <% }) %>
     </ul>
 </body>
