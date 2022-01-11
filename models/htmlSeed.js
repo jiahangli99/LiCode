@@ -1,7 +1,7 @@
 module.exports = [{
     type: 'html',
     name: 'HTML stands for?',
-    description: 'how do you add in js',
+    description: 'HTML stands for?',
     a: 'HighText Machine Language',
     b: 'HyperText and links Markup Language',
     c: 'HyperText Markup Language',
@@ -11,7 +11,7 @@ module.exports = [{
 {
 type: 'html',
 name: 'The correct sequence of HTML tags for starting a webpage is',
-description: 'how do you minus in js',
+description: 'The correct sequence of HTML tags for starting a webpage is',
 a: 'Head, Title, HTML, body',
 b: 'HTML, Body, Title, Head',
 c: 'HTML, Header, Title, Body',

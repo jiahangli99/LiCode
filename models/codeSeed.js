@@ -1,21 +1,21 @@
 module.exports = [{
     type: 'javascript',
-    name: 'Return the Sum of Two Numbers',
-    description: 'how do you add in js',
-    a: '+',
-    b: '-',
-    c: '*',
-    d: '/',
-    answer:'+'
+    name: 'Which of the following type of variable is visible only within a function where it is defined?',
+    description: 'Which of the following type of variable is visible only within a function where it is defined?',
+    a: 'global variable',
+    b: 'local variable',
+    c: 'Both of the above',
+    d: 'None of the above',
+    answer:'local variable'
 },
 {
 type: 'javascript',
-name: 'Return the diff of Two Numbers',
-description: 'how do you minus in js',
-a: '+',
-b: '-',
-c: '*',
-d: '/',
-answer:'-'
+name: 'Which built-in method returns the calling string value converted to lower case?',
+description: 'Which built-in method returns the calling string value converted to lower case?',
+a: 'toLowerCase()',
+b: 'toLower()',
+c: 'changeCase(case)',
+d: 'None of the above.',
+answer:'toLowerCase()'
 },
 ]

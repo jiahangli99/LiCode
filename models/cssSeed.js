@@ -1,21 +1,21 @@
 module.exports = [{
     type: 'css',
-    name: 'what is the default flex direction',
-    description: 'what is the default flex direction',
-    a: 'Column',
-    b: 'Column-reverse',
-    c: 'Row',
-    d: 'Row-reverse',
-    answer:'Row'
+    name: 'CSS stands for -',
+    description: 'CSS stands for -',
+    a: 'Cascade style sheets',
+    b: 'Color and style sheets',
+    c: 'Cascading style sheets',
+    d: 'None of the above',
+    answer:'Cascading style sheets'
 },
 {
 type: 'css',
-name: 'How to include CSS in the webpage?',
-description: 'How to include CSS in the webpage?',
-a: '<link rel="stylesheet" type="styles.css">',
-b: '<link rel="stylesheet" type="text/css" href="styles.css" />',
-c: 'It automatically does',
+name: 'Which of the following is the correct syntax for referring the external style sheet?',
+description: 'Which of the following is the correct syntax for referring the external style sheet?',
+a: '<link rel="stylesheet" type="text/css" href="example.css">',
+b: '<style src = "example.css" >',
+c: '<stylesheet> example.css </stylesheet>',
 d: '<script src="styles.css"></script>',
-answer:'<link rel="stylesheet" type="text/css" href="styles.css" />'
+answer:'<link rel="stylesheet" type="text/css" href="example.css">'
 },
 ]
