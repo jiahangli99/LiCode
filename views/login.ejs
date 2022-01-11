@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/login.css">
     <title>Document</title>
 </head>
 <body>
-    
+    <div class='login'>
     <h3>Login</h3>
 
     <% if(error) { %>
@@ -16,8 +17,10 @@
     <form action="/login" method="POST">
         <input type="email" name="email" placeholder="email"><br>
         <input type="password" name="password" placeholder="password"><br>
-        <input type="submit" value="Login">
+        <input class='loginbutton' type="submit" value="Login">
+        <p class='p'>Not Registered? <a href="/signup">Create an account</a></p>
    </form>
+</div>
 </body>
 </body>
 </html>
