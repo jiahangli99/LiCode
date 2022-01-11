@@ -35,6 +35,7 @@ app.use(methodOverride('_method'));
 app.use('/public', express.static('public'))
 
 app.use(auth.handleLoggedInUser)
+app.use(admin.handleLoggedInadmin)
 
 app.use('/', codesController)
 app.use('/', userController)

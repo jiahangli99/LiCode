@@ -5,10 +5,18 @@
     <nav class='head'>
         <li><a href="/">Home</a></li>
         <% if(user) { %>
+            <li><a href="/login/admin">Admin Login</a></li>
+            <li><a href="/logout">Logout</a></li>
+        <% } else if(admin) { %>
+            <li><a href="/javascript/new">Create JS</a></li>
+            <li><a href="/css/new">Create Css</a></li>
+            <li><a href="/html/new">Create Html</a></li>
+            <li><a href="/dev/new">Create Dev</a></li>
             <li><a href="/logout">Logout</a></li>
         <% } else { %>
             <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Signup</a></li>
+            <li><a href="/login/admin">Admin</a></li>
+            <li><a href="/signup">Sign-up</a></li>
         <% } %> 
     </nav>
     <hr>

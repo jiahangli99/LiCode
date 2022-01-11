@@ -9,9 +9,9 @@ userRouter.get('/login/admin', (req, res) => {
 });
 userRouter.post('/login/admin', (req, res) => {
    Admin.findOne({email: req.body.email}, (err, admin) => {
-       if(!admin) return res.render('login.ejs', {error: 'invalid credentials'})
+       if(!admin) return res.render('adminLogin.ejs', {error: 'invalid credentials'})
        const isMatched = bcrypt.compareSync(req.body.password, admin.password);
-       if(!isMatched) return res.render('login.ejs', {error: 'invalid credentials'})
+       if(!isMatched) return res.render('adminlogin.ejs', {error: 'invalid credentials'})
        req.session.admin = admin._id
         res.redirect('/')
    })
