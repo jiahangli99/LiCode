@@ -13,16 +13,17 @@
         <% allDev.forEach(dev => { %>
             <li>
                 <% if(!admin) { %>
-                <a href="/<%= dev.id %>/javascriptcode">
+                <a href="/<%= dev.id %>/devtoolview">
                     <p><%= dev.name%> </p>
     
                     <% }else { %>
-                        <a href="/<%= dev.id %>/javascriptcode">
+                        <a href="/<%= dev.id %>/devtoolview">
                             <p><%= dev.name%> </p>
                             <form action="/<%= dev.id %>/devtoolview?_method=DELETE" method="POST"
                                 style="display: inline; margin-left: 16px;">
                                 <input type="submit" value="DELETE" />
                             </form>
+                            <a href="/61d8dba87557c55c5353fa82/devtool/<%= dev.id %>/edit"><button>Edit</button></a>
                    <% } %>
                     
             </li>

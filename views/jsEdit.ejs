@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Question</h1>
+    <form action="/<%= code.id %>/javascriptcode?_method=PUT" method="POST">
+        Type: <input type="text" name="type" value="<%= code.type %>"/><br />
+        Name: <input type="text" name="name" value="<%= code.name %>"/><br />
+        Description: <input type="text" name="description" value="<%= code.description %>"/><br />
+        A: <input type="text" name="a" value="<%= code.a %>"/><br />
+        B: <input type="text" name="b" value="<%= code.b %>"/><br />
+        C: <input type="text" name="c" value="<%= code.c %>"/><br />
+        D: <input type="text" name="d" value="<%= code.d %>"/><br />
+        Answer: <input type="text" name="answer" value="<%= code.answer %>"/><br />
+        <input type="submit" name="" value="Edit Question" />
+    </form>
+</body>
+</html>

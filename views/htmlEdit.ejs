@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=htmlice-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Question</h1>
+    <form action="/<%= html.id %>/htmlview?_method=PUT" method="POST">
+        Type: <input type="text" name="type" value="<%= html.type %>"/><br />
+        Name: <input type="text" name="name" value="<%= html.name %>"/><br />
+        Description: <input type="text" name="description" value="<%= html.description %>"/><br />
+        A: <input type="text" name="a" value="<%= html.a %>"/><br />
+        B: <input type="text" name="b" value="<%= html.b %>"/><br />
+        C: <input type="text" name="c" value="<%= html.c %>"/><br />
+        D: <input type="text" name="d" value="<%= html.d %>"/><br />
+        Answer: <input type="text" name="answer" value="<%= html.answer %>"/><br />
+        <input type="submit" name="" value="Edit Question" />
+    </form>
+</body>
+</html>

@@ -32,6 +32,7 @@ app.use(function(req, res, next) {
     next();
 })
 app.use(methodOverride('_method'));
+app.use('/public', express.static('public'))
 
 app.use(auth.handleLoggedInUser)
 

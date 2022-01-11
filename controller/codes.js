@@ -101,7 +101,52 @@ codeRouter.delete('/:id/htmlview', admin.isAdminAuthenticated, (req, res) => {
     })
 })
 
-// Update
+// Update JS
+
+codeRouter.put('/:id/javascriptcode', (req, res) => {
+    JavaCode.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+    },
+    (err, updatedCode) => {
+        res.redirect('/')
+    }
+    )
+});
+
+// Update CSS
+codeRouter.put('/:id/cssview', (req, res) => {
+    CSS.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+    },
+    (err, updatedcss) => {
+        res.redirect('/')
+    }
+    )
+})
+
+// Update Html
+
+codeRouter.put('/:id/htmlview', (req, res) => {
+    HTML.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+    },
+    (err, updatedHtml) => {
+        res.redirect('/')
+    }
+    )
+})
+
+// Update Dev
+
+codeRouter.put('/:id/devtoolview', (req, res) => {
+    DEV.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+    },
+    (err, updatedDev) => {
+        res.redirect('/')
+    }
+    )
+})
 
 
 // Create JS
@@ -132,8 +177,44 @@ codeRouter.post('/61d8dba87557c55c5353fa82/devtool', admin.isAdminAuthenticated,
     })
 })
 
-// Edit
+// Edit JS
+codeRouter.get('/61d8dba87557c55c5353fa7f/javascript/:id/edit', admin.isAdminAuthenticated, (req, res) => {
+    JavaCode.findById(req.params.id, (err, update) => {
+        res.render('jsEdit.ejs', {
+            code: update
+        })
+    })
+})
 
+// Edit Css
+
+codeRouter.get('/61d8dba87557c55c5353fa80/css/:id/edit', admin.isAdminAuthenticated, (req, res) => {
+    CSS.findById(req.params.id, (err, update) => {
+        res.render('cssEdit.ejs', {
+            css: update
+        })
+    })
+})
+
+// Edit Html
+
+codeRouter.get('/61d8dba87557c55c5353fa81/html/:id/edit', admin.isAdminAuthenticated, (req, res) => {
+    HTML.findById(req.params.id, (err, update) => {
+        res.render('htmlEdit.ejs', {
+            html: update
+        })
+    })
+})
+
+// Edit Dev
+
+codeRouter.get('/61d8dba87557c55c5353fa82/devtool/:id/edit', admin.isAdminAuthenticated, (req, res) => {
+    DEV.findById(req.params.id, (err, update) => {
+        res.render('devToolEdit.ejs', {
+            dev: update
+        })
+    })
+})
 
 // Show javascript
 codeRouter.get('/:id/javascript', auth.isAuthenticated, (req, res) => {

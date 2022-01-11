@@ -12,7 +12,6 @@
     <ul>
         <% scriptCodes.forEach(code => { %>
         <li>
-            </a>
             <% if(!admin) { %>
             <a href="/<%= code.id %>/javascriptcode">
                 <p><%= code.name%> </p>
@@ -24,6 +23,7 @@
                             style="display: inline; margin-left: 16px;">
                             <input type="submit" value="DELETE" />
                         </form>
+                        <a href="/61d8dba87557c55c5353fa7f/javascript/<%= code.id %>/edit"><button>Edit</button></a>
                <% } %>
                 
         </li>

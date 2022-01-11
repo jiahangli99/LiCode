@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Question</h1>
+    <form action="/<%= css.id %>/cssview?_method=PUT" method="POST">
+        Type: <input type="text" name="type" value="<%= css.type %>"/><br />
+        Name: <input type="text" name="name" value="<%= css.name %>"/><br />
+        Description: <input type="text" name="description" value="<%= css.description %>"/><br />
+        A: <input type="text" name="a" value="<%= css.a %>"/><br />
+        B: <input type="text" name="b" value="<%= css.b %>"/><br />
+        C: <input type="text" name="c" value="<%= css.c %>"/><br />
+        D: <input type="text" name="d" value="<%= css.d %>"/><br />
+        Answer: <input type="text" name="answer" value="<%= css.answer %>"/><br />
+        <input type="submit" name="" value="Edit Question" />
+    </form>
+</body>
+</html>
